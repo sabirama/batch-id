@@ -7,7 +7,7 @@ import Modal from "../../../../../modules/utils/modules/modal.js";
 
 const DeleteFile = () => {
   const button = document.createElement("button");
-  button.textContent = "delete file";
+  button.textContent = "delete";
   button.className = "button";
 
   const toggle = false;

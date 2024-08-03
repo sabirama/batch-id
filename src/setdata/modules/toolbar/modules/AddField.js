@@ -3,7 +3,7 @@ import { SessionData } from "../../../../../modules/lib/lib.js";
 const AddField = () => {
   const button = document.createElement("button");
   button.className = "button";
-  button.textContent = "add field";
+  button.textContent = "field";
   button.addEventListener("click", handleAddField);
 
   function handleAddField() {

@@ -17,7 +17,9 @@ const editFileName = (e) => {
 
 const FileName = () => {
   const container = document.createElement("h4");
-  container.textContent = SessionData.get("file_name");
+  const fiteText = document.createElement("span");
+  ChildAdd(container, [fiteText]);
+  fiteText.textContent = SessionData.get("file_name");
 
   container.addEventListener("dblclick", editFileName);
   container.onchange = () => {
@@ -25,7 +27,7 @@ const FileName = () => {
   };
 
   function updateFileName() {
-    container.textContent = SessionData.get("file_name");
+    fiteText.textContent = SessionData.get("file_name");
   }
 
   window.addEventListener("setlocal", updateFileName);

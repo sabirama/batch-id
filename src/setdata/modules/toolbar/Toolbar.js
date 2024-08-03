@@ -11,15 +11,25 @@ import SaveItem from "./modules/SaveItem.js";
 const ToolBar = (properties = {}) => {
   const container = document.createElement("div");
   container.className = "toolbar";
-  return ChildAdd(container, [
-    FileName(),
+  const fileToolContainer = document.createElement("span");
+  fileToolContainer.textContent = "file: ";
+  const itemToolContainer = document.createElement("span");
+  itemToolContainer.textContent = "item: ";
+
+  ChildAdd(fileToolContainer, [
     OpenFile(),
     ...LoadLocalFile(),
-    ExportFile(),
-    AddField(),
-    SaveItem(properties.object),
     DeleteFile(),
+    ExportFile(),
     ReloadApp(),
+  ]);
+
+  ChildAdd(itemToolContainer, [SaveItem(properties.object),AddField()]);
+
+  return ChildAdd(container, [
+    FileName(),
+    fileToolContainer,
+    itemToolContainer,
   ]);
 };
 

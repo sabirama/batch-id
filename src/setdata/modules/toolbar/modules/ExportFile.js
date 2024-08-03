@@ -3,7 +3,7 @@ import { SessionData, WorkSession } from "../../../../../modules/lib/lib.js";
 const ExportFile = () => {
   const button = document.createElement("button");
   button.className = "button";
-  button.textContent = "export file";
+  button.textContent = "export";
   button.addEventListener("click", () => {
     const fileName = SessionData.get("file_name");
     const data = WorkSession.get(fileName);

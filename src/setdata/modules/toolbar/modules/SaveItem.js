@@ -9,7 +9,7 @@ const SaveItem = (object) => {
     empty[key] = "";
   });
 
-  button.textContent = "save item";
+  button.textContent = "new";
   button.addEventListener("click", () => {
     const currentFile = WorkSession.get();
     currentFile.push(object);

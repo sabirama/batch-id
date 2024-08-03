@@ -33,6 +33,25 @@ main {
   flex-wrap: wrap;
 }
 
+.toolbar h4 {
+  width: 200px;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.toolbar h4:hover {
+  overflow: visible;
+}
+
+.button h4 span {
+  padding: 0.125rem 0.25rem;
+
+}
+
+.toolbar h4:hover span {
+  background-color: white;
+}
+
 .toolbar h4 input {
   position: absolute;
   left: 0;
