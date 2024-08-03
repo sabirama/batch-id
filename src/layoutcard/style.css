@@ -6,7 +6,7 @@
 }
 
 .layout h2 {
-    margin: 1.5rem 1rem 0;
+    margin: 2rem 1rem 0;
 }
 
 .edit-layout {
@@ -34,9 +34,9 @@
     display: block;
     height: 324px;
     width: 204px;
-    background-color: whitesmoke;
     margin: 2rem .5rem 1rem;
     position: relative;
+    background-color: azure;
 }
 
 .card-head {
@@ -52,8 +52,33 @@
     border: 1px solid var(--border);
 }
 
+.field-properties h4 {
+    padding: 1rem;
+}
+
 .card-editor {
     display: flex;
     border: 1px solid var(--border);
     padding: 1rem;
+    user-select: none;
+}
+
+.background-select {
+    display: flex;
+    position: absolute;
+    bottom: -20px;
+    left: 40px;
+}
+
+.card-background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.draggable-field {
+    position: absolute;
+    border: 1px dotted black;
 }

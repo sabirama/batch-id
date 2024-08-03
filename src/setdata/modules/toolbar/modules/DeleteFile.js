@@ -7,7 +7,7 @@ import Modal from "../../../../../modules/utils/modules/modal.js";
 
 const DeleteFile = () => {
   const button = document.createElement("button");
-  button.textContent = "delete";
+  button.textContent = "clear";
   button.className = "button";
 
   const toggle = false;
@@ -35,18 +35,8 @@ function deleteHandler() {
   LocalData.remove(`"${filename}"`);
   sessionStorage.clear();
   SessionData.set("file_name", "File Name");
-  SessionData.set("fields", [
-    "name",
-    "address",
-    "contact number",
-    "contact person",
-  ]);
-  SessionData.set("current_object", {
-    name: "",
-    address: "",
-    "contact person": "",
-    "contact number": "",
-  });
+  SessionData.set("fields", []);
+  SessionData.set("current_object", {});
   window.dispatchEvent(new Event("newsession"));
 }
 

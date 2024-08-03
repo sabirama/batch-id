@@ -7,7 +7,7 @@ import {
 const OpenFile = () => {
   const button = document.createElement("button");
   button.className = "button";
-  button.textContent = "open";
+  button.textContent = "new";
 
   const csvInput = document.createElement("input");
   csvInput.type = "file";

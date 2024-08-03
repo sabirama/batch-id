@@ -8,7 +8,7 @@ import {
 const LoadLocalFile = () => {
   const button = document.createElement("button");
   button.className = "button";
-  button.textContent = "load";
+  button.textContent = "local";
   button.addEventListener("click", getLocalFiles);
 
   const itemList = document.createElement("div");
