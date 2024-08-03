@@ -2,6 +2,7 @@ import {
   ChildAdd,
   DragElement,
   SessionData,
+  ResizeAbleElement,
 } from "../../../modules/lib/lib.js";
 
 const Card = (text = "card") => {
@@ -38,23 +39,77 @@ const Card = (text = "card") => {
 
 const CardLayout = () => {
   const container = document.createElement("div");
+  const fieldContainer = document.createElement("div");
+  fieldContainer.className = "container-edit-fields";
   container.className = "card-editor";
   const front = Card("front");
   front.classList.add("front");
   const back = Card("back");
   back.classList.add("back");
 
-  const fields = SessionData.get("fields");
-  fields.forEach((field, i) => {
-    const element = document.createElement("span");
-    element.className = "draggable-field";
-    element.textContent = field;
-    element.style.zIndex = 4;
-    element.style.top = `${i + 6}rem`;
-    ChildAdd(container, [element]);
-    DragElement(element, container);
-  });
-  return ChildAdd(container, [front, back]);
+  const startObject =
+    SessionData.get("start") || SessionData.get("current_object") || {};
+  startObject.image = startObject.image || { x: 0, y: 0 };
+
+  function updateUI() {
+    const fields = SessionData.get("fields") || [];
+    const image = document.createElement("div");
+    image.className = "layout-image";
+    image.textContent = "IMAGE";
+    ResizeAbleElement(image);
+
+    fieldContainer.innerHTML = "";
+    ChildAdd(fieldContainer, [image]);
+
+    // Set initial position for the image
+    image.style.left = `${startObject.image.x}px`;
+    image.style.top = `${startObject.image.y}px`;
+
+    DragElement(
+      image,
+      container,
+      { x: startObject.image.x, y: startObject.image.y },
+      (newPosition) => {
+        startObject.image = newPosition;
+        SessionData.set("start", startObject);
+      }
+    );
+
+    fields.forEach((field, i) => {
+      const element = document.createElement("span");
+      element.className = "draggable-field";
+      element.textContent = field;
+      element.style.zIndex = 4;
+      ResizeAbleElement(element);
+      // Initialize field position if not set
+      if (!startObject[field]) {
+        startObject[field] = { x: 0, y: (i + 6) * 16 }; // Convert rem to pixels
+      }
+
+      // Set initial position for the field
+      element.style.left = `${startObject[field].x}px`;
+      element.style.top = `${startObject[field].y}px`;
+
+      ChildAdd(fieldContainer, [element]);
+
+      DragElement(
+        element,
+        container,
+        { x: startObject[field].x, y: startObject[field].y },
+        (newPosition) => {
+          startObject[field] = newPosition;
+          SessionData.set("start", startObject);
+        }
+      );
+    });
+  }
+
+  window.addEventListener("removefield", updateUI);
+  window.addEventListener("newfield", updateUI);
+
+  updateUI();
+
+  return ChildAdd(container, [front, back, fieldContainer]);
 };
 
 export default CardLayout;
