@@ -1,6 +1,4 @@
-
-import { ChildAdd, SessionData} from '../../../../../../modules/lib/lib.js';
-
+import {ChildAdd, SessionData } from "../../../../../modules/lib/lib.js"
 const Headers = ({
   cellContainer = "input",
   cellSpan = 1,
