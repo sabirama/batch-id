@@ -6,13 +6,14 @@ import ItemListing from "./modules/item_listing/ItemListing.js";
 
 const SetData = () => {
   const container = document.createElement("main");
-  container.className = "setdata";
   const fileName = SessionData.get("file_name");
   let fields = SessionData.get("fields");
   let objectArray = WorkSession.get();
   let object = SessionData.get("current_object");
   fields = SessionData.get("fields");
 
+  container.className = "setdata";
+  
   if (!fileName) {
     SessionData.set("file_name", "File Name");
   }
@@ -34,6 +35,7 @@ const SetData = () => {
       "contact number": "",
     });
   }
+
   return ChildAdd(container, [
     ToolBar({ objectArray, object }),
     ManageKeys({ fields, object }),

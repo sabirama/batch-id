@@ -19,7 +19,6 @@ const ItemListing = () => {
     Headers({ cellSpan: cellSpan, cellWidth }),
     ItemRow({ objects, cellSpan: cellSpan, cellWidth }),
   ]);
-
   DragResize(container);
 
   return element;

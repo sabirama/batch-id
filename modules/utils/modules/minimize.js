@@ -1,7 +1,6 @@
 const Minimize = (element, height, toggle, callback = () => {}) => {
   const button = document.createElement("button");
   button.textContent = "--";
-  button.style.width = "100vw";
   button.className = "minimize";
 
   const updateState = () => {
@@ -13,7 +12,7 @@ const Minimize = (element, height, toggle, callback = () => {}) => {
       callback(toggle);
     } else {
       element.style.height = height;
-      element.style.overflow = "scroll";
+      element.style.overflow = "auto";
       toggle = true;
       button.style.height = "auto";
       callback(toggle);

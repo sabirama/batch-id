@@ -2,7 +2,8 @@ import {
   ChildAdd,
   SessionData,
   WorkSession,
-} from '../../../../../modules/lib/lib.js';
+} from "../../../../../modules/lib/lib.js";
+
 const ItemRow = ({ objects, cellSpan = 1, rowSpan = 1, cellWidth = 100 }) => {
   const container = document.createElement("div");
   let keys = SessionData.get("fields") || [];
@@ -10,17 +11,17 @@ const ItemRow = ({ objects, cellSpan = 1, rowSpan = 1, cellWidth = 100 }) => {
   const renderRows = () => {
     container.innerHTML = ""; // Clear container before re-rendering
 
-    if (typeof objects != "object" || objects[0] === null) {
-      WorkSession.remove();
-      objects = [];
-    }
-
     // Define grid template based on the number of keys
     const templateColumns =
       keys.map(() => `${cellSpan}fr`).join(" ") +
       ` ${cellSpan}fr ${cellSpan}fr`;
     container.className = "rows";
     container.style.gridTemplateColumns = templateColumns;
+
+    if (typeof objects != "object" || objects[0] === null) {
+      WorkSession.remove();
+      objects = [];
+    }
 
     objects.forEach((item, i) => {
       const itemContainer = document.createElement("div");
@@ -36,9 +37,10 @@ const ItemRow = ({ objects, cellSpan = 1, rowSpan = 1, cellWidth = 100 }) => {
       indexer.disabled = true;
 
       ChildAdd(itemContainer, [indexer]);
+      
       keys.forEach((key) => {
         const field = document.createElement("input");
-        field.className = "cell";
+        field.className = `cell row-${i} col-${key}`;
         field.style.width = `${cellWidth}px`;
         field.value = item[key] || "";
         field.addEventListener("change", (e) => {

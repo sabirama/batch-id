@@ -70,9 +70,13 @@
 /* MARK: Fields Manager */
 .fields-manager {
   border: 1px solid var(--border);
-  padding: 1rem;
   overflow-y: scroll;
   position: relative;
+}
+
+.fields-manager h3 {
+  margin-top: 2rem;
+  padding: 0 1rem;
 }
 
 .fields-container {
@@ -80,7 +84,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0.25rem;
-  margin-top: 1rem;
+  margin: 1rem;
 }
 
 .field-container {
@@ -156,6 +160,7 @@
 .image {
   display: none;
 }
+
 .button-modules {
   z-index: 2;
   position: absolute;
@@ -206,6 +211,22 @@
 
 .list-header-field {
   text-align: center;
+  position: relative;
+  color: black;
+}
+
+.list-header-plus,
+.list-header-minus {
+  position: absolute;
+  height: 96%;
+  width: 12px;
+  border: none;
+}
+.list-header-plus {
+  right: 0;
+}
+.list-header-minus {
+  left: 0;
 }
 
 @media screen and (max-width: 477px) {
@@ -217,6 +238,7 @@
 .cell {
   padding: 0.125rem;
   height: 24px;
+  min-width: 50px;
 }
 
 .button {
@@ -229,8 +251,4 @@
   position: absolute;
   top: 0.5rem;
   right: 0.25rem;
-}
-
-.setdata .minimize {
-  transform: translateX(-1rem);
 }

@@ -23,17 +23,20 @@ main {
 .minimize {
   position: absolute;
   min-height: 20px;
+  width: 100%;
   top: 0;
   z-index: 2;
+  text-align: left;
+  padding-left: 1rem;
 }
 
 .handle {
-  display: flex;
-  height: 4px;
+  display: block;
+  height: 8px;
   background-color: black;
   transform: translate(-1rem);
   position: sticky;
   left: 0;
   bottom: 0;
-  width: 100svw;
+  width: 100%;
 }
