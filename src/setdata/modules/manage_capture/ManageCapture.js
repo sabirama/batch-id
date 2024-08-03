@@ -6,8 +6,8 @@ const ManageCapture = () => {
   container.className = "capture-manager";
   const video = document.createElement("video");
   video.className = "video";
-  video.style.width = "320px";
-  video.style.height = "480px";
+  video.style.width = "1080px";
+  video.style.height = "1920px";
   video.autoplay = true;
   const canvas = document.createElement("canvas");
   canvas.style.display = "none";

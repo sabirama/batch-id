@@ -138,7 +138,7 @@ main {
 
 .video {
   position: absolute;
-  transform: scaleX(-1.8) scaleY(1.8);
+  transform: scaleX(-.5) scaleY(.5);
 }
 
 .image {
