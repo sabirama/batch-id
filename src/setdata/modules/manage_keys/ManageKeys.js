@@ -51,6 +51,7 @@ const ManageKeys = ({ fields, object }) => {
     // Update the label and cleanup
     label.textContent = newFieldName;
     label.style.display = "inline-block";
+    window.dispatchEvent(new Event("newsession"));
     e.target.remove();
   }
 

@@ -75,9 +75,7 @@ const ItemRow = ({ objects, cellSpan = 1, rowSpan = 1, cellWidth = 100 }) => {
   };
 
   window.addEventListener("setlocal", handleSetLocal);
-
   window.addEventListener("newfield", handleUpdateFields);
-
   window.addEventListener("removefield", handleUpdateFields);
   window.addEventListener("newsession", handleUpdateFields);
 
