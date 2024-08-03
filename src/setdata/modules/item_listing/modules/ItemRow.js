@@ -2,7 +2,7 @@ import {
   ChildAdd,
   SessionData,
   WorkSession,
-} from '../../../../../../modules/lib/lib.js';
+} from '../../../../../modules/lib/lib.js';
 const ItemRow = ({ objects, cellSpan = 1, rowSpan = 1, cellWidth = 100 }) => {
   const container = document.createElement("div");
   let keys = SessionData.get("fields") || [];
