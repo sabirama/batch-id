@@ -8,6 +8,7 @@
     "middle middle middle middle"
     "bottom bottom bottom bottom";
   height: min-content;
+  min-height: 20px;
 }
 
 .toolbar {

@@ -5,7 +5,7 @@ const Minimize = (element, height, toggle, callback = () => {}) => {
 
   const updateState = () => {
     if (toggle === true) {
-      element.style.height = "10px";
+      element.style.height = "20px";
       element.style.overflow = "hidden";
       button.style.height = "100%";
       toggle = false;

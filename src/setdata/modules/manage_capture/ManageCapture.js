@@ -12,7 +12,7 @@ const ManageCapture = () => {
   const canvas = document.createElement("canvas");
   canvas.style.display = "none";
   const image = document.createElement("img");
-  image.className = "image"
+  image.className = "image";
   image.style.height = video.style.height;
   image.style.width = video.style.width;
 
