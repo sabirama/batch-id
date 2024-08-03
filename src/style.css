@@ -129,11 +129,12 @@ main {
   position: relative;
   align-items: center;
   justify-content: center;
+  width: 250px;
+  height: 334px;
+  margin: 0 auto;
   padding: 1rem;
   border: 1px solid black;
   overflow: hidden;
-  width: 330px;
-  margin: 0 auto;
 }
 
 .video {
@@ -229,8 +230,6 @@ main {
   .capture-manager {
     grid-area: middle;
     grid-column: 4 / 5;
-    width: 250px;
-    height: 334px;
     display: flex;
     margin-left: auto;
   }
