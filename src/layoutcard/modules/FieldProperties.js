@@ -1,4 +1,4 @@
-import { ChildAdd } from "../../../../modules/lib/lib.js";
+import { ChildAdd } from "../../../modules/lib/lib.js";
 
 const FieldProperties = () => {
   const container = document.createElement("div");
