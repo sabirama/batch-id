@@ -221,6 +221,7 @@
   position: absolute;
   height: 96%;
   width: 12px;
+  top: 0;
   border: none;
 }
 .list-header-plus {

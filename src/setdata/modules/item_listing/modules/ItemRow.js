@@ -40,7 +40,7 @@ const ItemRow = ({ objects, cellSpan = 1, rowSpan = 1, cellWidth = 100 }) => {
       
       keys.forEach((key) => {
         const field = document.createElement("input");
-        field.className = `cell row-${i} col-${key}`;
+        field.className = `cell row-${i} col-${key.replace(" ", "-")}`;
         field.style.width = `${cellWidth}px`;
         field.value = item[key] || "";
         field.addEventListener("change", (e) => {

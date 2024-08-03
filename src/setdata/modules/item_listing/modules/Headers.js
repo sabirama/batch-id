@@ -29,7 +29,7 @@ const Headers = ({
       const field = document.createElement(cellContainer);
       const minus = document.createElement("button");
       const plus = document.createElement("button");
-      field.className = `list-header-field cell  col-${key}`;
+      field.className = `list-header-field cell  col-${key.replace(" ", "-")}`;
       field.style.width = `${cellWidth}px`;
       field.textContent = key;
       field.disabled = true;
@@ -38,7 +38,7 @@ const Headers = ({
       plus.className = "list-header-plus";
 
       function updateWidth(operator) {
-        const list = document.querySelectorAll(`.col-${key}`);
+        const list = document.querySelectorAll(`.col-${key.replace(" ", "-")}`);
         if (width > 50) {
           operator === "+"
             ? (width += 20)
