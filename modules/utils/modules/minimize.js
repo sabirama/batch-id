@@ -1,24 +1,28 @@
-const Minimize = (element, height, callback = () => {}) => {
+const Minimize = (element, height, toggle, callback = () => {}) => {
   const button = document.createElement("button");
   button.textContent = "--";
+  button.style.width = "100vw";
   button.className = "minimize";
-  let toggle = true;
-  button.addEventListener("click", () => {
+
+  const updateState = () => {
     if (toggle === true) {
       element.style.height = "10px";
       element.style.overflow = "hidden";
-      button.style.width = "100vw";
       button.style.height = "100%";
       toggle = false;
       callback(toggle);
     } else {
       element.style.height = height;
+      element.style.overflow = "scroll";
       toggle = true;
-      button.style.width = "auto";
       button.style.height = "auto";
       callback(toggle);
     }
-  });
+  };
+
+  button.addEventListener("click", updateState);
+  updateState();
+
   return button;
 };
 

@@ -1,0 +1,59 @@
+.layout {
+    display: block;
+    min-height: 20px;
+    height: 400px;
+    border: 1px solid var(--border);
+}
+
+.layout h2 {
+    margin: 1.5rem 1rem 0;
+}
+
+.edit-layout {
+    display: flex;
+    flex-direction: row;
+    padding: 1rem;
+}
+
+.edit-elements {
+    padding: .5rem;
+    border: 1px solid var(--border);
+    width: 150px;
+}
+
+.edit-field {
+    padding: .5rem .25rem;
+    border: 1px solid var(--border);
+    width: inherit;
+    font-size: 12px;
+    transform: translateX(-.5rem);
+    border: 1px solid var(--border);
+}
+
+.card {
+    display: block;
+    height: 324px;
+    width: 204px;
+    background-color: whitesmoke;
+    margin: 2rem .5rem 1rem;
+    position: relative;
+}
+
+.card-head {
+    padding: .125rem;
+    position: absolute;
+    top: -2rem;
+    left: 102px;
+    transform: translateX(-50%);
+}
+
+.field-properties {
+    width: calc(100% - 624px);
+    border: 1px solid var(--border);
+}
+
+.card-editor {
+    display: flex;
+    border: 1px solid var(--border);
+    padding: 1rem;
+}

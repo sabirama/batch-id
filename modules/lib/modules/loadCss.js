@@ -1,13 +1,8 @@
-function loadCSS(href, element) {
+function loadCSS(href) {
   const link = document.createElement("link");
   link.rel = "stylesheet";
-  link.type = "text/css";
   link.href = href;
-  if (element) {
-    element.appendChild(link);
-  } else {
-    document.head.appendChild(link);
-  }
+  document.head.appendChild(link);
 }
 
 export default loadCSS;

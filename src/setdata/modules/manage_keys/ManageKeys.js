@@ -152,7 +152,7 @@ const ManageKeys = ({ fields, object }) => {
   renderFields();
 
   return ChildAdd(container, [
-    Minimize(container, "334px", (toggle) => handleMinimize(toggle)),
+    Minimize(container, "334px", false, (toggle) => handleMinimize(toggle)),
     headerText,
     fieldsContainer,
   ]);

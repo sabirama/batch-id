@@ -15,7 +15,7 @@ const ItemListing = () => {
   const objects = WorkSession.get();
 
   const element = ChildAdd(container, [
-    Minimize(container, "auto"),
+    Minimize(container, "auto", true),
     Headers({ cellSpan: cellSpan, cellWidth }),
     ItemRow({ objects, cellSpan: cellSpan, cellWidth }),
   ]);

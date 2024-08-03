@@ -5,15 +5,15 @@ const ButtonModules = ({ video, image, canvas }) => {
   container.className = "button-modules";
   const start = document.createElement("button");
   start.className = "button";
-  start.textContent = "Open Camera";
+  start.textContent = "Open";
   const capture = document.createElement("button");
   capture.className = "button";
-  capture.textContent = "Snap Photo";
+  capture.textContent = "Snap";
   const close = document.createElement("button");
   close.className = "button";
-  close.textContent = "Close Camera";
+  close.textContent = "Close";
   const download = document.createElement("a");
-
+  
   start.addEventListener("click", () => {
     startVideo(video);
   });
