@@ -116,8 +116,8 @@
 
 .remove-field {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: .125rem;
+  right: .125rem;
   transform: scale(0.7) translate(2px, -2px);
 }
 
