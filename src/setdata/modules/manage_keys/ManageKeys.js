@@ -58,7 +58,7 @@ const ManageKeys = ({ fields, object }) => {
   function handleInputChange(e, field) {
     object[field] = e.target.value;
     SessionData.set("current_object", object);
-    e.target.blur()
+    e.target.blur();
   }
 
   function handleField(i, container, label, input, close) {

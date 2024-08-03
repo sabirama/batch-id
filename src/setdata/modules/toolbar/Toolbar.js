@@ -24,7 +24,7 @@ const ToolBar = (properties = {}) => {
     ReloadApp(),
   ]);
 
-  ChildAdd(itemToolContainer, [SaveItem(properties.object),AddField()]);
+  ChildAdd(itemToolContainer, [SaveItem(properties.object), AddField()]);
 
   return ChildAdd(container, [
     FileName(),

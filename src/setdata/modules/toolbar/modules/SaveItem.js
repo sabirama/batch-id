@@ -15,6 +15,7 @@ const SaveItem = (object) => {
     currentFile.push(object);
     WorkSession.set(currentFile);
     SessionData.set("current_object", empty);
+    window.dispatchEvent(new Event("newsession"))
   });
   return button;
 };

@@ -24,6 +24,15 @@ const SetData = (parent) => {
       "contact person",
     ]);
   }
+
+  if (!object) {
+    SessionData.set("current_object", {
+      name: "",
+      address: "",
+      "contact person": "",
+      "contact number": "",
+    });
+  }
   return ChildAdd(parent, [
     ToolBar({ objectArray, object }),
     ManageKeys({ fields, object }),
