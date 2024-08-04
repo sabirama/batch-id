@@ -67,13 +67,13 @@ const CardLayout = () => {
     ChildAdd(fieldContainer, [image]);
 
     // Set initial position for the image
-    image.style.left = `${startObject.image.x}px`;
-    image.style.top = `${startObject.image.y}px`;
+    image.style.left = `${startObject?.image?.x}px`;
+    image.style.top = `${startObject?.image?.y}px`;
 
     DragElement(
       image,
       container,
-      { x: startObject.image.x, y: startObject.image.y },
+      { x: startObject?.image?.x, y: startObject?.image?.y },
       (newPosition) => {
         startObject.image = newPosition;
         SessionData.set("properties", startObject);
