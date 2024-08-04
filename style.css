@@ -21,7 +21,7 @@ main {
 }
 
 .minimize {
-  position: absolute;
+  position: sticky;
   min-height: 20px;
   width: 100%;
   top: 0;

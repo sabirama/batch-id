@@ -1,19 +1,20 @@
-function resizeAbleElement(element, minWidth = 20, minHeight = 20) {
+function resizeAbleElement(
+  element,
+  minWidth = 20,
+  minHeight = 20,
+  callback = () => {}
+) {
   const resizer = document.createElement("div");
   resizer.className = "resizer";
-  resizer.style.width = "2px";
-  resizer.style.height = "2px";
+  resizer.style.width = "4px";
+  resizer.style.height = "4px";
   resizer.style.background = "red";
   resizer.style.position = "absolute";
   resizer.style.right = "0";
   resizer.style.bottom = "0";
   resizer.style.cursor = "se-resize";
+  resizer.style.overflow = "hidden";
   element.appendChild(resizer);
-
-  // Set the element to be relatively positioned if it isn't already
-  if (window.getComputedStyle(element).position === "static") {
-    element.style.position = "relative";
-  }
 
   // Variables to store the starting position and size
   let original_width = 0;
@@ -37,6 +38,7 @@ function resizeAbleElement(element, minWidth = 20, minHeight = 20) {
   }
 
   function stopResize() {
+    callback({ width: element.style.width, height: element.style.height });
     window.removeEventListener("mousemove", resize);
   }
 

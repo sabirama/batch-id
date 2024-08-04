@@ -5,6 +5,7 @@ import d from "./modules/loadCss.js";
 import e from "./modules/dragResize.js";
 import f from "./modules/dragElement.js";
 import g from "./modules/resizeAbleElement.js";
+import h from "./modules/rotateElement.js";
 
 export const StartApp = a; // load app scripts
 export const WorkSession = b.WorkSession; // set, update, delete localStorage with current filename data
@@ -15,6 +16,7 @@ export const loadCSS = d; // get css file loaded
 export const DragResize = e; // attach resize to a parent element
 export const DragElement = f; // change element position by dragging it around the display
 export const ResizeAbleElement = g; // change height and width of element
+export const RotateElement = h; // change element rotation
 export default {
   ChildAdd,
   WorkSession,
@@ -25,4 +27,5 @@ export default {
   DragResize,
   DragElement,
   ResizeAbleElement,
+  RotateElement,
 };

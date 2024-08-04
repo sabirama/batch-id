@@ -3,27 +3,43 @@ import { ChildAdd, SessionData } from "../../../modules/lib/lib.js";
 const EditElements = () => {
   const container = document.createElement("div");
   container.className = "edit-elements";
-  const head = document.createElement("h3");
-  ChildAdd(container, [head]);
+
+  let currentActive;
 
   function updateUI() {
-    const fields = SessionData.get("fields");
+    const fields = SessionData.get("fields") || [];
 
+    // Clear existing elements
     container.innerHTML = "";
-    head.textContent = "Fields";
+
     fields.forEach((field) => {
-      const fieldElement = document.createElement("p");
-      fieldElement.className = "edit-field";
+      const fieldElement = document.createElement("button");
+      fieldElement.className = `edit-field ${
+        currentActive === field ? "active" : ""
+      }`;
       fieldElement.textContent = field;
+
+      // Handle click events
+      fieldElement.addEventListener("click", () => {
+        currentActive = field;
+        SessionData.set("current_field", field);
+        window.dispatchEvent(new Event("updatefield"));
+      });
+
       ChildAdd(container, [fieldElement]);
     });
   }
 
-  window.addEventListener("removefield", updateUI);
-  window.addEventListener("newfield", updateUI);
-  
+  // Set up event listeners
+  const handleRemoveField = () => updateUI();
+  const handleNewField = () => updateUI();
+
+  window.addEventListener("removefield", handleRemoveField);
+  window.addEventListener("newfield", handleNewField);
+  window.addEventListener("updatefield", handleNewField);
+  // Initial UI update
   updateUI();
-  
+
   return container;
 };
 

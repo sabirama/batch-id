@@ -177,10 +177,10 @@
 
 /* MARK: Listing */
 .listing {
-  padding-top: 1rem;
   overflow: scroll;
   border: 1px solid var(--border);
   position: relative;
+  height: 200px;
 }
 
 .cell-index {
@@ -196,6 +196,7 @@
 
 .remove-row {
   width: 20px;
+  height: 24px;
 }
 
 .list-save-changes {
