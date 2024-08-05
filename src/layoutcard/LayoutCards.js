@@ -1,4 +1,4 @@
-import { ChildAdd } from "../../modules/lib/lib.js";
+import { ChildAdd, SessionData } from "../../modules/lib/lib.js";
 import EditElements from "./modules/EditElements.js";
 import { Minimize } from "../../modules/utils/utils.js";
 import CardLayout from "./modules/Card.js";
@@ -12,6 +12,9 @@ const LayOutCards = () => {
   const editContainer = document.createElement("div");
   editContainer.className = "edit-layout";
 
+  initializeProperties();
+  window.addEventListener("newfield", initializeProperties);
+  
   ChildAdd(editContainer, [EditElements(), FieldProperties(), CardLayout()]);
 
   return ChildAdd(container, [
@@ -20,5 +23,24 @@ const LayOutCards = () => {
     editContainer,
   ]);
 };
+
+function initializeProperties() {
+  const fields = SessionData.get("fields");
+  const properties = SessionData.get("properties") || {};
+
+  fields.forEach((field) => {
+    if (!properties[field]) {
+      properties[field] = {
+        x: 0,
+        y: 0,
+        width: 80,
+        height: 24,
+        transform: "rotate(0deg)",
+      };
+    }
+  });
+
+  SessionData.set("properties", properties);
+}
 
 export default LayOutCards;

@@ -4,7 +4,25 @@ import SetData from "./setdata/SetData.js";
 
 const App = () => {
   const app = document.createElement("div");
-  return ChildAdd(app, [SetData(), LayOutCards()]);
+
+  function updateUI(app) {
+    app.innerHTML = `
+    <div class="refresh">
+      <h1>Setting up</h1>
+    </div>
+    `;
+    setTimeout(() => {
+      app.innerHTML = "";
+      ChildAdd(app, [SetData(), LayOutCards()]);
+    }, 200);
+  }
+
+  window.addEventListener("refresh", () => {
+    updateUI(app);
+  });
+
+  updateUI(app);
+  return app;
 };
 
 export default App;

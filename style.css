@@ -40,3 +40,10 @@ main {
   bottom: 0;
   width: 100%;
 }
+
+.refresh {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 98vh;
+}

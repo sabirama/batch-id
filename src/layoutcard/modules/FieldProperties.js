@@ -1,29 +1,51 @@
 import { ChildAdd, SessionData } from "../../../modules/lib/lib.js";
 
 const FieldProperties = () => {
+  let currentActive = "";
+
   const container = document.createElement("div");
   container.className = "field-properties";
 
-  const head = document.createElement("h4");
-  head.textContent = "Field Proerties";
-
-  let currentActive = "";
-  const properties = SessionData.get("properties") || {};
-
-  window.addEventListener("updatefield", () => {
-    currentActive = SessionData.get("current_field");
-    updateUI();
-  });
+  window.addEventListener("updatefield", updateUI);
+  window.addEventListener("newfield", updateUI);
+  window.addEventListener("removefield", updateUI);
 
   function updateUI() {
-    container.innerHTML = "";
-    ChildAdd(container, [
-      head,
-      changeFont(properties[currentActive]),
-      changeFontStyle(properties[currentActive]),
-      changeFontSize(properties[currentActive]),
-      changeColor(properties[currentActive]),
-    ]);
+    const properties = SessionData.get("properties") || {};
+
+    const head = document.createElement("h4");
+    head.textContent = "Field Properties";
+
+    const save = document.createElement("button");
+    save.textContent = "apply changes";
+    save.addEventListener("click", () => {
+      SessionData.set("properties", properties);
+      window.dispatchEvent(new Event("newsession"));
+    });
+
+    container.innerHTML = "getting property";
+    currentActive = SessionData.get("current_field");
+
+    if (currentActive === "") {
+      return;
+    }
+
+    setTimeout(() => {
+      container.innerHTML = "";
+      ChildAdd(container, [
+        head,
+        changeFont(properties[currentActive]),
+        changeFontStyle(properties[currentActive]),
+        changeFontSize(properties[currentActive]),
+        changeColor(properties[currentActive]),
+        changeLeft(properties[currentActive]),
+        changeTop(properties[currentActive]),
+        changeWidth(properties[currentActive]),
+        changeHeight(properties[currentActive]),
+        changRotation(properties[currentActive]),
+        save,
+      ]);
+    }, 200);
   }
 
   updateUI();
@@ -43,10 +65,9 @@ function changeFont(field) {
   italic.textContent = "times new roman";
   const bold = document.createElement("option");
   bold.textContent = "tahoma";
-  console.log(field);
 
   input.addEventListener("change", (e) => {
-    console.log(e.target.value);
+    field.font_family = e.target.value;
   });
 
   ChildAdd(input, [normal, italic, bold]);
@@ -65,10 +86,9 @@ function changeFontStyle(field) {
   italic.textContent = "italic";
   const bold = document.createElement("option");
   bold.textContent = "bold";
-  console.log(field);
 
   input.addEventListener("change", (e) => {
-    console.log(e.target.value);
+    field.font_style = e.target.value;
   });
 
   ChildAdd(input, [normal, italic, bold]);
@@ -87,6 +107,7 @@ function changeFontSize(field) {
       e.preventDefault();
       e.target.value = 4;
     }
+    field.font_size = e.target.value;
   });
   return ChildAdd(container, [label, input]);
 }
@@ -98,7 +119,85 @@ function changeColor(field) {
   label.textContent = "color:   ";
   const input = document.createElement("input");
   input.type = "color";
-  input.addEventListener("change", (e) => {});
+  input.addEventListener("change", (e) => {
+    field.color = e.target.value;
+  });
+  return ChildAdd(container, [label, input]);
+}
+
+function changeLeft(field) {
+  const container = document.createElement("div");
+  container.className = "property-change";
+  const label = document.createElement("label");
+  label.textContent = "X:   ";
+  const input = document.createElement("input");
+  input.type = "number";
+  input.value = field.x || 20;
+  input.addEventListener("change", (e) => {
+    field.x = e.target.value;
+  });
+
+  return ChildAdd(container, [label, input]);
+}
+
+function changeTop(field) {
+  const container = document.createElement("div");
+  container.className = "property-change";
+  const label = document.createElement("label");
+  label.textContent = "Y:   ";
+  const input = document.createElement("input");
+  input.type = "number";
+  input.value = field.y || 20;
+  input.addEventListener("change", (e) => {
+    field.y = e.target.value;
+  });
+
+  return ChildAdd(container, [label, input]);
+}
+
+function changeWidth(field) {
+  const container = document.createElement("div");
+  container.className = "property-change";
+  const label = document.createElement("label");
+  label.textContent = "width:   ";
+  const input = document.createElement("input");
+  input.type = "number";
+  input.value = field.width || 20;
+  input.addEventListener("change", (e) => {
+    field.width = e.target.value;
+  });
+
+  return ChildAdd(container, [label, input]);
+}
+
+function changeHeight(field) {
+  const container = document.createElement("div");
+  container.className = "property-change";
+  const label = document.createElement("label");
+  label.textContent = "height:   ";
+  const input = document.createElement("input");
+  input.type = "number";
+  input.value = field.height || 20;
+  input.addEventListener("change", (e) => {
+    field.height = e.target.value;
+  });
+
+  return ChildAdd(container, [label, input]);
+}
+
+function changRotation(field) {
+  const container = document.createElement("div");
+  container.className = "property-change";
+  const label = document.createElement("label");
+  label.textContent = "rotate:   ";
+  const input = document.createElement("input");
+  input.type = "number";
+  const regex = /[a-zA-Z!@#$%^&*()_+{}\[\]:;"'<>,.?/\\|`~]/g;
+  input.value = Number(field.transform.replace(regex, "")) || 0;
+  input.addEventListener("change", (e) => {
+    field.transform = `rotate(${e.target.value}deg)`;
+  });
+
   return ChildAdd(container, [label, input]);
 }
 

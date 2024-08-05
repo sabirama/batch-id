@@ -9,6 +9,7 @@ const EditElements = () => {
   function updateUI() {
     const fields = SessionData.get("fields") || [];
 
+    fields.unshift("image");
     // Clear existing elements
     container.innerHTML = "";
 
@@ -30,13 +31,10 @@ const EditElements = () => {
     });
   }
 
-  // Set up event listeners
-  const handleRemoveField = () => updateUI();
-  const handleNewField = () => updateUI();
-
-  window.addEventListener("removefield", handleRemoveField);
-  window.addEventListener("newfield", handleNewField);
-  window.addEventListener("updatefield", handleNewField);
+  window.addEventListener("removefield", updateUI);
+  window.addEventListener("newfield", updateUI);
+  window.addEventListener("updatefield", updateUI);
+  window.addEventListener("newsession", updateUI);
   // Initial UI update
   updateUI();
 
