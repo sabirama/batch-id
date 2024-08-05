@@ -1,4 +1,4 @@
-import { ChildAdd, SessionData } from "../../../modules/lib/lib.js";
+import { ChildAdd, SessionData } from "../../../../modules/lib/lib.js";
 
 const EditElements = () => {
   const container = document.createElement("div");

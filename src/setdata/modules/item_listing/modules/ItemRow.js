@@ -8,7 +8,7 @@ const ItemRow = ({ objects, cellSpan = 1, rowSpan = 1, cellWidth = 100 }) => {
   const container = document.createElement("div");
   let keys = SessionData.get("fields") || [];
 
-  const renderRows = () => {
+  const updateUI = () => {
     container.innerHTML = ""; // Clear container before re-rendering
 
     // Define grid template based on the number of keys
@@ -37,7 +37,7 @@ const ItemRow = ({ objects, cellSpan = 1, rowSpan = 1, cellWidth = 100 }) => {
       indexer.disabled = true;
 
       ChildAdd(itemContainer, [indexer]);
-      
+
       keys.forEach((key) => {
         const field = document.createElement("input");
         field.className = `cell row-${i} col-${key.replace(" ", "-")}`;
@@ -62,18 +62,18 @@ const ItemRow = ({ objects, cellSpan = 1, rowSpan = 1, cellWidth = 100 }) => {
   const removeRow = (index) => {
     objects.splice(index, 1);
     WorkSession.set(objects); // Update the session data
-    renderRows(); // Re-render after removing a row
+    updateUI(); // Re-render after removing a row
   };
 
   // Set up the event listener
   const handleSetLocal = () => {
     objects = WorkSession.get();
-    renderRows();
+    updateUI();
   };
 
   const handleUpdateFields = () => {
     keys = SessionData.get("fields");
-    renderRows();
+    updateUI();
   };
 
   window.addEventListener("setlocal", handleSetLocal);
@@ -82,7 +82,7 @@ const ItemRow = ({ objects, cellSpan = 1, rowSpan = 1, cellWidth = 100 }) => {
   window.addEventListener("newsession", handleUpdateFields);
 
   // Initial render
-  renderRows();
+  updateUI();
   // Return an object with the container and a cleanup function
   return container;
 };

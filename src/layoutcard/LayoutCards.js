@@ -1,8 +1,8 @@
 import { ChildAdd, SessionData } from "../../modules/lib/lib.js";
-import EditElements from "./modules/EditElements.js";
+import EditElements from "./modules/edit_elements/EditElements.js";
 import { Minimize } from "../../modules/utils/utils.js";
-import CardLayout from "./modules/Card.js";
-import FieldProperties from "./modules/FieldProperties.js";
+import CardLayout from "./modules/card/Card.js";
+import FieldProperties from "./modules/field_properties/FieldProperties.js";
 
 const LayOutCards = () => {
   const container = document.createElement("main");
@@ -14,7 +14,7 @@ const LayOutCards = () => {
 
   initializeProperties();
   window.addEventListener("newfield", initializeProperties);
-  
+
   ChildAdd(editContainer, [EditElements(), FieldProperties(), CardLayout()]);
 
   return ChildAdd(container, [

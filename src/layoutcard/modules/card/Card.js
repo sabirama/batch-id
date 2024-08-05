@@ -4,7 +4,7 @@ import {
   SessionData,
   ResizeAbleElement,
   RotateElement,
-} from "../../../modules/lib/lib.js";
+} from "../../../../modules/lib/lib.js";
 
 const Card = (text = "card") => {
   const container = document.createElement("div");
@@ -120,6 +120,10 @@ const CardLayout = () => {
       element.style.left = `${properties[field].x}px`;
       element.style.top = `${properties[field].y}px`;
       element.style.transform = properties[field].transform;
+      element.style.fontStyle = properties[field].font_style;
+      element.style.fontFamily = properties[field].font_family;
+      element.style.fontSize = `${properties[field].font_size}px`;
+      element.style.color = properties[field].color;
 
       DragElement(
         element,

@@ -1,4 +1,4 @@
-import { ChildAdd, SessionData } from "../../../modules/lib/lib.js";
+import { ChildAdd, SessionData } from "../../../../modules/lib/lib.js";
 
 const FieldProperties = () => {
   let currentActive = "";
@@ -23,11 +23,11 @@ const FieldProperties = () => {
       window.dispatchEvent(new Event("newsession"));
     });
 
-    container.innerHTML = "getting property";
+    container.innerHTML = "getting properties";
     currentActive = SessionData.get("current_field");
 
-    if (currentActive === "") {
-      return;
+    if (currentActive === "" || currentActive === "image") {
+      return (container.innerHTML = "Select Field");
     }
 
     setTimeout(() => {
@@ -86,7 +86,7 @@ function changeFontStyle(field) {
   italic.textContent = "italic";
   const bold = document.createElement("option");
   bold.textContent = "bold";
-
+  input.value = field.font_family;
   input.addEventListener("change", (e) => {
     field.font_style = e.target.value;
   });
@@ -102,6 +102,7 @@ function changeFontSize(field) {
   label.textContent = "font-size:   ";
   const input = document.createElement("input");
   input.type = "number";
+  input.value = field.font_size;
   input.addEventListener("change", (e) => {
     if (e.target.value < 4) {
       e.preventDefault();
@@ -119,6 +120,7 @@ function changeColor(field) {
   label.textContent = "color:   ";
   const input = document.createElement("input");
   input.type = "color";
+  input.value = field.color;
   input.addEventListener("change", (e) => {
     field.color = e.target.value;
   });
