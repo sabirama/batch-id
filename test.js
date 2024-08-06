@@ -12,6 +12,10 @@ canvas.height = canvasHeight;
 // Set up drawing variables
 let drawing = false;
 
+// Get the pen size input
+const penSizeInput = document.getElementById('penSize');
+let penSize = parseInt(penSizeInput.value, 10);
+
 // Function to start drawing
 function startDrawing(event) {
     drawing = true;
@@ -22,6 +26,11 @@ function startDrawing(event) {
 // Function to draw on the canvas
 function draw(event) {
     if (!drawing) return;
+
+    // Calculate the pen size based on pressure
+    const pressure = event.pressure || 1; // Default to 1 if pressure is not available
+    ctx.lineWidth = penSize * pressure;
+
     ctx.lineTo(event.offsetX, event.offsetY);
     ctx.stroke();
 }
@@ -32,11 +41,11 @@ function stopDrawing() {
     ctx.closePath();
 }
 
-// Add event listeners for mouse actions
-canvas.addEventListener('mousedown', startDrawing);
-canvas.addEventListener('mousemove', draw);
-canvas.addEventListener('mouseup', stopDrawing);
-canvas.addEventListener('mouseout', stopDrawing);
+// Add event listeners for pointer actions
+canvas.addEventListener('pointerdown', startDrawing);
+canvas.addEventListener('pointermove', draw);
+canvas.addEventListener('pointerup', stopDrawing);
+canvas.addEventListener('pointerout', stopDrawing);
 
 // Clear canvas function
 function clearCanvas() {
@@ -51,3 +60,11 @@ function saveCanvas() {
     link.download = 'signature.png';
     link.click();
 }
+
+// Update pen size when slider changes
+penSizeInput.addEventListener('input', (event) => {
+    penSize = parseInt(event.target.value, 10);
+});
+
+// Initialize pen size
+ctx.lineWidth = penSize;

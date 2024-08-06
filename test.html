@@ -7,15 +7,21 @@
     <style>
         #signatureCanvas {
             border: 1px solid #000;
-            background-color: #fff;
+        }
+        #controls {
+            margin-bottom: 10px;
         }
     </style>
 </head>
 <body>
-    <h1>Signature Canvas</h1>
+    <div id="controls">
+        <label for="penSize">Pen Size:</label>
+        <input type="range" id="penSize" min="1" max="20" value="5">
+        <button onclick="clearCanvas()">Clear Canvas</button>
+        <button onclick="saveCanvas()">Save Canvas</button>
+    </div>
     <canvas id="signatureCanvas"></canvas>
-    <button onclick="clearCanvas()">Clear</button>
-    <button onclick="saveCanvas()">Save</button>
+
     <script src="test.js"></script>
 </body>
 </html>
