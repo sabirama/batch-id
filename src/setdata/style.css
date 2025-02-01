@@ -1,0 +1,256 @@
+/* MARK: Grid Layout */
+.setdata {
+  display: grid;
+  grid-template-rows: auto auto auto;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-areas:
+    "top top top top"
+    "middle middle middle middle"
+    "bottom bottom bottom bottom";
+  height: min-content;
+  min-height: 20px;
+}
+
+.toolbar {
+  grid-area: top;
+  max-height: 60px;
+}
+
+.fields-manager {
+  grid-area: middle;
+  grid-column: 1 / 4;
+  height: 334px;
+}
+
+.capture-manager {
+  grid-area: middle;
+  grid-column: 4 / 5;
+  display: flex;
+  margin-left: auto;
+}
+
+.listing {
+  grid-area: bottom;
+}
+
+/* MARK: Toolbar */
+.toolbar {
+  background-color: whitesmoke;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  padding: 0.25rem;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.toolbar h4 {
+  width: 200px;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.toolbar h4:hover {
+  overflow: visible;
+}
+
+.button h4 span {
+  padding: 0.125rem 0.25rem;
+}
+
+.toolbar h4:hover span {
+  background-color: white;
+}
+
+.toolbar h4 input {
+  position: absolute;
+  left: 0;
+}
+
+/* MARK: Fields Manager */
+.fields-manager {
+  border: 1px solid var(--border);
+  overflow-y: scroll;
+  position: relative;
+}
+
+.fields-manager h3 {
+  padding: 1rem;
+}
+
+.fields-container {
+  height: min-content;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  margin: 0 1rem;
+}
+
+.field-container {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  position: relative;
+  justify-content: left;
+  width: min-content;
+  margin: 0 0.25rem;
+  padding: 0.125rem;
+  border: 1px solid var(--border);
+}
+
+.field-input {
+  width: 125px;
+  padding: 0.125rem;
+}
+
+.field-label {
+  display: inline-flex;
+  justify-content: left;
+  width: 125px;
+  font-size: 12px;
+  padding-left: 0.25rem;
+  text-wrap: nowrap;
+  overflow-x: hidden;
+}
+
+.remove-field {
+  position: absolute;
+  top: .125rem;
+  right: .125rem;
+  transform: scale(0.7) translate(2px, -2px);
+}
+
+.file-list {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 100;
+  background-color: white;
+  width: 200px;
+  min-height: 5rem;
+  border: 1px solid var(--border);
+}
+
+.file-list p {
+  padding: 0.25rem 0.5rem;
+  border: 1px solid var(--border);
+}
+
+/* MARK: Capture Manager */
+.capture-manager {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  width: 250px;
+  height: 334px;
+  margin: 0 auto;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.video {
+  position: absolute;
+  transform: scaleX(calc(250 / 1920)) scaleY(calc(334 / 1440));
+}
+
+.image {
+  display: none;
+}
+
+.button-modules {
+  z-index: 2;
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  flex-wrap: nowrap;
+  transform: scale(0.8);
+}
+
+.image {
+  object-fit: cover;
+}
+
+/* MARK: Listing */
+.listing {
+  overflow: scroll;
+  border: 1px solid var(--border);
+  position: relative;
+  height: 200px;
+}
+
+.cell-index {
+  width: 40px;
+  padding-right: 0.25rem;
+  text-align: right;
+}
+
+.rows {
+  display: grid;
+  width: min-content;
+}
+
+.remove-row {
+  width: 20px;
+  height: 24px;
+}
+
+.list-save-changes {
+  padding: 0.125rem 0.25rem;
+  position: sticky;
+  left: 0;
+  bottom: 0;
+}
+
+.list-header {
+  display: grid;
+  width: min-content;
+}
+
+.list-header-field {
+  text-align: center;
+  position: relative;
+  color: black;
+}
+
+.list-header-plus,
+.list-header-minus {
+  position: absolute;
+  height: 96%;
+  width: 12px;
+  top: 0;
+  border: none;
+}
+.list-header-plus {
+  right: 0;
+}
+.list-header-minus {
+  left: 0;
+}
+
+@media screen and (max-width: 477px) {
+  .field-container {
+    width: calc(50vw - 45px);
+  }
+}
+
+.cell {
+  padding: 0.125rem;
+  height: 24px;
+  min-width: 50px;
+}
+
+.button {
+  width: fit-content;
+  text-wrap: nowrap;
+  padding: 0.25rem 0.5rem;
+}
+
+.close {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.25rem;
+}

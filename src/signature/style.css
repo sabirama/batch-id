@@ -1,0 +1,40 @@
+:root {
+    max-width: 600px;
+    margin: auto;
+}
+
+canvas {
+    height: 400px;
+    width: 600px;
+    border: 2px solid black;
+    margin-top: .5em;
+}
+
+div {
+    display: flex;
+    justify-content: center;
+}
+
+#name {
+    width: 100px;
+}
+
+#name, #save, #clear, #eraser, #stroke-container {
+    padding: .25em .5em;
+}
+
+#stroke-container {
+    border: 1px solid black;
+    width: fit-content;
+    display: flex;
+    gap: .25em;
+}
+
+#stroke {
+    width: 40px;
+    border: none;
+}
+
+.eraser {
+    background-color: gray;
+}
